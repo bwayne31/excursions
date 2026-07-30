@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Excursions — Carnival Venezia, March 2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy: #0d2b3e;
+    --navy-deep: #081c29;
+    --teal: #1c7c8c;
+    --teal-light: #4fa3ac;
+    --brass: #b8923f;
+    --brass-light: #d9b876;
+    --paper: #f5f0e3;
+    --paper-dim: #ece4d0;
+    --ink: #1c2a30;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    line-height:1.5;
+  }
+  h1,h2,h3, .stamp-name{
+    font-family:'Fraunces', serif;
+  }
+
+  /* ---------- HEADER ---------- */
+  header{
+    background: linear-gradient(180deg, var(--navy-deep) 0%, var(--navy) 100%);
+    color: var(--paper);
+    padding: 3.5rem 1.5rem 3rem;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  header::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+      radial-gradient(circle at 15% 30%, rgba(184,146,63,0.10) 0, transparent 45%),
+      radial-gradient(circle at 85% 70%, rgba(79,163,172,0.14) 0, transparent 50%);
+    pointer-events:none;
+  }
+  .eyebrow{
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    font-size:0.72rem;
+    color:var(--brass-light);
+    font-weight:600;
+    margin-bottom:0.9rem;
+  }
+  header h1{
+    font-size:clamp(2rem, 5vw, 3.1rem);
+    margin:0 0 0.6rem;
+    font-weight:600;
+    letter-spacing:-0.01em;
+  }
+  header p.sub{
+    margin:0;
+    font-size:1.05rem;
+    color:#cfe0e4;
+    font-weight:400;
+  }
+
+  /* ---------- ROUTE STRIP ---------- */
+  .route-wrap{
+    max-width:1000px;
+    margin:-2.2rem auto 0;
+    padding:0 1.5rem;
+    position:relative;
+    z-index:2;
+  }
+  .route{
+    background:var(--paper);
+    border:1px solid var(--paper-dim);
+    border-radius:14px;
+    box-shadow:0 18px 40px rgba(8,28,41,0.18);
+    padding:2rem 1.5rem 1.6rem;
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:0.5rem;
+    position:relative;
+  }
+  .route-line{
+    position:absolute;
+    top:2.85rem;
+    left:12%;
+    right:12%;
+    height:2px;
+    background-image: linear-gradient(90deg, var(--teal) 0 8px, transparent 8px 14px);
+    background-size:14px 2px;
+    background-repeat:repeat-x;
+    z-index:0;
+  }
+  .stop{
+    position:relative;
+    z-index:1;
+    flex:1;
+    text-align:center;
+    text-decoration:none;
+    color:inherit;
+  }
+  .stamp{
+    width:56px;height:56px;
+    margin:0 auto 0.7rem;
+    border-radius:50%;
+    background:var(--navy);
+    color:var(--brass-light);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:1.3rem;
+    border:2px solid var(--brass);
+    box-shadow:0 4px 10px rgba(13,43,62,0.25);
+  }
+  .stop .day{
+    font-size:0.68rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--teal);
+    font-weight:600;
+    margin-bottom:0.15rem;
+  }
+  .stop .stamp-name{
+    font-size:1.02rem;
+    font-weight:600;
+    color:var(--ink);
+  }
+
+  /* ---------- NAV JUMP LINKS ---------- */
+  .jumpnav{
+    max-width:1000px;
+    margin:1.6rem auto 0;
+    padding:0 1.5rem;
+    display:flex;
+    gap:0.6rem;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+  .jumpnav a{
+    text-decoration:none;
+    font-size:0.82rem;
+    font-weight:500;
+    color:var(--teal);
+    border:1px solid var(--teal);
+    padding:0.4rem 0.9rem;
+    border-radius:999px;
+    transition: all 0.15s ease;
+  }
+  .jumpnav a:hover{
+    background:var(--teal);
+    color:var(--paper);
+  }
+
+  /* ---------- PORT SECTIONS ---------- */
+  main{
+    max-width:1000px;
+    margin:0 auto;
+    padding:3.5rem 1.5rem 5rem;
+  }
+  .port{
+    margin-bottom:4rem;
+    scroll-margin-top:1.5rem;
+  }
+  .port-head{
+    display:flex;
+    align-items:baseline;
+    gap:1rem;
+    border-bottom:2px solid var(--navy);
+    padding-bottom:0.8rem;
+    margin-bottom:0.4rem;
+    flex-wrap:wrap;
+  }
+  .port-head h2{
+    margin:0;
+    font-size:1.7rem;
+    font-weight:600;
+    color:var(--navy);
+  }
+  .port-head .port-date{
+    font-size:0.85rem;
+    color:var(--teal);
+    font-weight:600;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+  }
+  .port-note{
+    margin:0.7rem 0 1rem;
+    font-size:0.95rem;
+    color:#4a5a61;
+    max-width:65ch;
+  }
+
+  .map-link{
+    display:inline-flex;
+    align-items:center;
+    gap:0.35rem;
+    margin-bottom:1.6rem;
+    font-size:0.82rem;
+    font-weight:600;
+    color:var(--teal);
+    text-decoration:none;
+  }
+  .map-link:hover{ color:var(--navy); }
+
+  .card-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(260px, 1fr));
+    gap:1rem;
+  }
+  .card{
+    display:block;
+    text-decoration:none;
+    color:inherit;
+    background:#fff;
+    border:1px solid var(--paper-dim);
+    border-radius:10px;
+    padding:1.2rem 1.3rem 1.3rem;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+  }
+  .card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 12px 24px rgba(13,43,62,0.14);
+    border-color:var(--teal-light);
+  }
+  .card-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:0.6rem;
+    margin-bottom:0.45rem;
+  }
+  .card h3{
+    margin:0;
+    font-size:1.06rem;
+    font-weight:600;
+    color:var(--navy);
+    line-height:1.3;
+  }
+  .price{
+    flex-shrink:0;
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:0.95rem;
+    color:var(--navy-deep);
+    background:var(--paper-dim);
+    border:1px solid var(--brass);
+    border-radius:6px;
+    padding:0.15rem 0.5rem;
+    white-space:nowrap;
+  }
+  .card p{
+    margin:0 0 0.9rem;
+    font-size:0.88rem;
+    color:#556269;
+  }
+  .card .go{
+    font-size:0.78rem;
+    font-weight:600;
+    color:var(--teal);
+    letter-spacing:0.02em;
+  }
+  .card .go::after{
+    content:" →";
+  }
+
+  .browse-all{
+    display:inline-block;
+    margin-top:1.5rem;
+    font-size:0.9rem;
+    font-weight:600;
+    color:var(--navy);
+    text-decoration:none;
+    border-bottom:2px solid var(--brass);
+    padding-bottom:2px;
+  }
+  .browse-all:hover{ color:var(--teal); border-color:var(--teal); }
+
+  .price-note{
+    font-size:0.78rem;
+    color:#8a938a;
+    margin-top:2.5rem;
+    text-align:center;
+  }
+
+  footer{
+    text-align:center;
+    padding:1rem 1.5rem 3rem;
+    font-size:0.8rem;
+    color:#7a8890;
+  }
+
+  @media (max-width:640px){
+    .route{flex-direction:column; gap:1.6rem;}
+    .route-line{display:none;}
+    .stop{text-align:left; display:flex; align-items:center; gap:1rem;}
+    .stamp{margin:0;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">Carnival Venezia · 7-Night Eastern Caribbean</div>
+  <h1>Our Excursions</h1>
+  <p class="sub">March 7–14, 2027 · Port Canaveral round-trip</p>
+</header>
+
+<div class="route-wrap">
+  <div class="route">
+    <div class="route-line"></div>
+    <a href="#celebration-key" class="stop">
+      <div class="stamp">CK</div>
+      <div class="day">Mon · Mar 8</div>
+      <div class="stamp-name">Celebration Key</div>
+    </a>
+    <a href="#san-juan" class="stop">
+      <div class="stamp">SJ</div>
+      <div class="day">Wed · Mar 10</div>
+      <div class="stamp-name">San Juan</div>
+    </a>
+    <a href="#st-thomas" class="stop">
+      <div class="stamp">STT</div>
+      <div class="day">Thu · Mar 11</div>
+      <div class="stamp-name">St. Thomas</div>
+    </a>
+    <!-- Tip: tapping a stamp above jumps to that port's excursion list; use the "View on the map" link within each section for the map itself. -->
+  </div>
+</div>
+
+<nav class="jumpnav">
+  <a href="#celebration-key">Celebration Key</a>
+  <a href="#san-juan">San Juan</a>
+  <a href="#st-thomas">St. Thomas</a>
+</nav>
+
+<main>
+
+  <!-- CELEBRATION KEY -->
+  <section class="port" id="celebration-key">
+    <div class="port-head">
+      <h2>Celebration Key, Bahamas</h2>
+      <span class="port-date">Monday, March 8 · 8:00 AM – 4:00 PM</span>
+    </div>
+    <p class="port-note">Carnival's private destination on Grand Bahama Island. Most of the beach and lagoon areas are included with your cruise — these are the bookable add-ons and excursions. Prices are per adult, starting price shown.</p>
+    <a class="map-link" href="https://maps.google.com/?q=Celebration+Key+Grand+Bahama+Island" target="_blank" rel="noopener">📍 View Celebration Key on the map</a>
+    <div class="card-grid">
+
+      <a class="card" href="https://www.carnival.com/shore-excursions/celebration-key/celebration-key-champagne-cruise-adult-only-409090" target="_blank" rel="noopener">
+        <div class="card-top">
+          <h3>Beach, Beats, & Bubbly: Adults Only</h3>
+          <span class="price">$109.99</span>
+        </div>
+        <p>A scenic sail out to a secluded beach oasis, with swimming, music, and a champagne send-off back to the island.</p>
+        <span class="go">View on Carnival</span>
+      </a>
+
+      <a class="card" href="https://www.carnival.com/shore-excursions/celebration-key/soaring-parasail-bahamian-waters-409072" target="_blank" rel="noopener">
+        <div class="card-top">
+          <h3>Soaring: Parasail Bahamian Waters</h3>
+          <span class="price">$149.99</span>
+        </div>
+        <p>Sail 500 ft. above the coastline harnessed to a parachute-style canopy for sweeping views of Celebration Key.</p>
+        <span class="go">View on Carnival</span>
+      </a>
+
+      <a class="card" href="https://www.carnival.com/shore-excursions/celebration-key/suncastle-racing-slides-409095" target="_blank" rel="noopener">
+        <div class="card-top">
+          <h3>Suncastle Racing Slides</h3>
+          <span class="price">$14.99</span>
+        </div>
+        <p>Unlimited all-day access to the Flash Flamingo and Mach 3 Marlin racing water slides inside the Suncastle.</p>
+        <span class="go">View on Carnival</span>
+      </a>
+
+      <a class="card" href="https://www.carnival.com/shore-excursions/celebration-key/sail-snorkel--party-to-peterson-s-cay-409077" target="_blank" rel="noopener">
+        <div class="card-top">
+          <h3>Sail, Snorkel & Party to Peterson's Cay</h3>
+          <span class="price">$99.99</span>
+        </div>
+        <p>Catamaran sail to a reef at Peterson's Cay with snorkeling, an open bar, music, and time in the water or on the sand.</p>
+        <span class="go">View on Carnival</span>
+      </a>
+
+      <a class="card" href="https://www.carnival.com/shore-excursions/celebration-key/pearl-cove-beach-club-all-inclusive-409063" target="_blank" rel="noopener">
+        <div class="card-top">
+          <h3>Pearl Cove Beach Club: All Inclusive</h3>
+          <span class="price">$125.99</span>
+        </div>
+        <p>Adults-only beach club with an infinity pool, private beach access, a premium lunch, and open bar all day.</p>
+        <span class="go">View on Carnival</span>
+      </a>
+
+      <a class="card" href="https://www.carnival.com/shore-excursions/celebration-key/pearl-cove-beach-club-access-409062" target="_blank" rel="noopener">
+        <div class="card-top">
+          <h3>Pearl Cove Beach Club Access</h3>
+          <span class="price">$59.99</span>
+        </div>
+        <p>A lighter, access-only pass into the adults-only beach club, with a complimentary welcome drink for 21+.</p>
+        <span class="go">View on Carnival</span>
+      </a>
+
+    </div>
+    <a class="browse-all" href="https://www.carnival.com/shore-excursions/celebration-key" target="_blank" rel="noopener">Browse the full Celebration Key list on Carnival →</a>
+  </section>
+
+  <!-- SAN JUAN -->
+  <section class="port" id="san-juan">
+    <div class="port-head">
+      <h2>San Juan, Puerto Rico</h2>
+      <span class="port-date">Wednesday, March 10 · 1:00 PM – 9:00 PM</span>
+    </div>
+    <p class="port-note">A late-afternoon-into-evening call — plenty of time for a half-day tour before dinner back onboard, or an evening stroll through Old San Juan. Prices are per adult, starting price shown.</p>
+    <a class="map-link" href="https://maps.google.com/?q=Old+San+Juan+Cruise+Port+Puerto+Rico" target="_blank" rel="noopener">📍 View San Juan cruise port on the map</a>
+    <div class="card-grid">
+
+      <a class="card" href="https://www.carnival.com/shore-excursions/san-juan/top-10-must-see-of-san-juan-427126" target="_blank" rel="noopener">
+        <div class="card-top">
+          <h3>Ultimate San Juan Collection: Landmarks & Beauty</h3>
+          <span class="price">$66.99</span>
+        </div>
+        <p>A guided drive through Old and New San Juan hitting El Capitolio, Condado, Isla Verde, and historic Old San Juan.</p>
+        <span class="go">View on Carnival</span>
+      </a>
+
+      <a class="card" href="https://www.carnival.com/shore-excursions/san-juan/puerto-rico-s-favorites-427031" target="_blank" rel="noopener">
+        <div class="card-top">
+          <h3>PR Favorite: Rainforest, Fortress & Old San Juan</h3>
+          <span class="price">$118.99</span>
+        </div>
+        <p>El Yunque National Rainforest, San Cristobal Fortress, and a panoramic tour of the city in one outing.</p>
+        <span class="go">View on Carnival</span>
+      </a>
+
+      <a class="card" href="https://www.carnival.com/shore-excursions/san-juan/easy-new-and-old-san-juan-427120" target="_blank" rel="noopener">
+        <div class="card-top">
+          <h3>Easy New and Old San Juan</h3>
+          <span class="price">$82.99</span>
+        </div>
+        <p>A relaxed, mostly-by-vehicle tour covering both the historic old town and the modern side of the city.</p>
+        <span class="go">View on Carnival</span>
+      </a>
+
+      <a class="card" href="https://www.carnival.com/shore-excursions/san-juan/el-yunque-rainforest-with-el-portal-experience-427140" target="_blank" rel="noopener">
+        <div class="card-top">
+          <h3>El Yunque Rainforest with El Portal Experience</h3>
+          <span class="price">$102.99</span>
+        </div>
+        <p>The only tropical rainforest in the U.S. National Forest System, plus the El Portal visitor center exhibits.</p>
+        <span class="go">View on Carnival</span>
+      </a>
+
+      <a class="card" href="https://www.carnival.com/shore-excursions/san-juan/canopy-zipline-adventure-427138" target="_blank" rel="noopener">
+        <div class="card-top">
+          <h3>Canopy Zipline Adventure</h3>
+          <span class="price">$144.99</span>
+        </div>
+        <p>Five ziplines (including a 1,000 ft. run) and hanging bridges through the forest canopy at Hacienda Campo Rico.</p>
+        <span class="go">View on Carnival</span>
+      </a>
+
+      <a class="card" href="https://www.carnival.com/shore-excursions/san-juan/beach-escape-at-vivo-beach-club-with-lunch-427079" target="_blank" rel="noopener">
+        <div class="card-top">
+          <h3>Beach Escape at Vivo Beach Club with Lunch</h3>
+          <span class="price">$82.99</span>
+        </div>
+        <p>A short transfer to a private Caribbean beach club for sunbathing, swimming, and an included buffet lunch.</p>
+        <span class="go">View on Carnival</span>
+      </a>
+
+    </div>
+    <a class="browse-all" href="https://www.carnival.com/shore-excursions/san-juan-puerto-rico" target="_blank" rel="noopener">Browse the full San Juan list on Carnival →</a>
+  </section>
+
+  <!-- ST THOMAS -->
+  <section class="port" id="st-thomas">
+    <div class="port-head">
+      <h2>St. Thomas, USVI</h2>
+      <span class="port-date">Thursday, March 11 · 7:00 AM – 4:00 PM</span>
+    </div>
+    <p class="port-note">A full port day. Good options range from beach time and Magen's Bay to a ferry over to St. John. Prices are per adult, starting price shown.</p>
+    <a class="map-link" href="https://maps.google.com/?q=Havensight+Cruise+Port+St+Thomas+USVI" target="_blank" rel="noopener">📍 View St. Thomas cruise port on the map</a>
+    <div class="card-grid">
+
+      <a class="card" href="https://www.carnival.com/shore-excursions/st-thomas/discover-st-thomas--magen-s-bay-434070" target="_blank" rel="noopener">
+        <div class="card-top">
+          <h3>Discover St. Thomas & Magen's Bay</h3>
+          <span class="price">$75.99</span>
+        </div>
+        <p>Skyline Drive views, Mountain Top's panoramic vista, two hours at Magen's Bay, and historic Charlotte Amalie.</p>
+        <span class="go">View on Carnival</span>
+      </a>
+
+      <a class="card" href="https://www.carnival.com/shore-excursions/st-thomas-usvi/st-thomas-skyride-to-paradise-point-434008" target="_blank" rel="noopener">
+        <div class="card-top">
+          <h3>Skyride to Paradise Point</h3>
+          <span class="price">$30.99</span>
+        </div>
+        <p>A cable-car ride 700 feet up for harbor and city views, on your own schedule anytime during the day.</p>
+        <span class="go">View on Carnival</span>
+      </a>
+
+      <a class="card" href="https://www.carnival.com/shore-excursions/st-thomas/coral-world--beach-434134" target="_blank" rel="noopener">
+        <div class="card-top">
+          <h3>Coral World & Beach</h3>
+          <span class="price">$56.99</span>
+        </div>
+        <p>A marine park with a living coral reef exhibit, stingrays and turtles, paired with time at Coki Beach.</p>
+        <span class="go">View on Carnival</span>
+      </a>
+
+      <a class="card" href="https://www.carnival.com/shore-excursions/st-thomas/st-john-trunk-bay-beach-getaway--snorkel-434117" target="_blank" rel="noopener">
+        <div class="card-top">
+          <h3>St. John Trunk Bay Beach Getaway & Snorkel</h3>
+          <span class="price">$120.99</span>
+        </div>
+        <p>Ferry to St. John, a scenic safari-taxi ride, and 90 minutes to swim or snorkel at famed Trunk Bay.</p>
+        <span class="go">View on Carnival</span>
+      </a>
+
+      <a class="card" href="https://www.carnival.com/shore-excursions/st-thomas/st-john-on-your-own-434119" target="_blank" rel="noopener">
+        <div class="card-top">
+          <h3>St. John On Your Own</h3>
+          <span class="price">$56.99</span>
+        </div>
+        <p>Boat over to St. John for roughly two and a quarter hours of free time to explore Cruz Bay at your own pace.</p>
+        <span class="go">View on Carnival</span>
+      </a>
+
+      <a class="card" href="https://www.carnival.com/shore-excursions/st-thomas/easy-st-thomas-island-tour-434083" target="_blank" rel="noopener">
+        <div class="card-top">
+          <h3>Easy St. Thomas Island Tour</h3>
+          <span class="price">$82.99</span>
+        </div>
+        <p>A relaxed scenic drive up to the island's highest peak for views of Magen's Bay and the British Virgin Islands.</p>
+        <span class="go">View on Carnival</span>
+      </a>
+
+    </div>
+    <a class="browse-all" href="https://www.carnival.com/shore-excursions/st-thomas-usvi" target="_blank" rel="noopener">Browse the full St. Thomas list on Carnival →</a>
+  </section>
+
+  <p class="price-note">Prices pulled directly from Carnival's site and are per adult unless noted; they can change and don't include tax. Always confirm on the linked page before booking.</p>
+
+</main>
+
+<footer>
+  Built for our own trip planning · Links go directly to Carnival Cruise Line's official excursion pages.
+</footer>
+
+</body>
+</html>
